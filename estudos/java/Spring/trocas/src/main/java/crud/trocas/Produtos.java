@@ -19,26 +19,41 @@ public class Produtos {
     }
 
 
+
     @Column(name="NomeDoProduto")
     private String NomeDoProduto;
 
-    public void SetNomeDoProduto(String nameofproduct){
-        this.NomeDoProduto = nameofproduct;
+    public String getNomeDoProduto() {
+        return NomeDoProduto;
     }
 
-    public String GetNomeDoProduto(){
-        return NomeDoProduto;
+    public void setNomeDoProduto(String nomeDoProduto) {
+        this.NomeDoProduto = nomeDoProduto;
     }
 
 
     @Column(name="Descricao")
+    private String Descricao;
+
+    public String getDescricao() {
+        return Descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.Descricao = descricao;
+    }
+
+
+    @Column(name="Desejo")
     private String Desejo;
 
-    public void SetDesejo(String wish){
-        this.Desejo = wish;
-    }
 
-    public String GetDesejo(){
+    public String getDesejo() {
         return Desejo;
     }
+
+    public void setDesejo(String desejo) {
+        this.Desejo = desejo;
+    }
+
 }

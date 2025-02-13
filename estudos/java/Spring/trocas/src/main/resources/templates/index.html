@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="banner">
+        <h2 id="titulo">Trocas</h2>
+
+        <span id="busca"><input><button>a</button></span>
+
+        <button id="opcs">=</button>
+    </div>
+
+    <div id="options">
+        <a href="/criar"><h3 id="send_produtos">colocar produtos</h3></a>
+    </div>
+
+    <div>
+
+    </div>
+
+
+    <script src="script.js">
+        const BotaoDeOptions =document.querySelector("opcs");
+        const options = document.querySelector("#send_produtos");
+
+        options.addEventListener("submit",(e)=>{
+            e.preventDefault();
+ options.style.display="block"
+        });
+
+        options.style.display="none"
+         
+
+
+        fetch("http://localhost:3000").then(
+            response.status(200)
+          ).catch(
+            response.status(400)
+          )
+    </script>
+
+</body>
+
+<style>
+    #banner{
+    position: absolute;
+
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100px;
+    background: linear-gradient(50deg,#7eedba,#b565c0,#772f50);
+
+}
+
+#titulo{
+    position: absolute;
+    top: 10px;
+    left:200px;
+
+}
+
+#busca{
+    position: relative;
+    top: 30px;
+    left: 600px;
+
+    border-radius: 20px ;
+    
+}
+
+#opcs{
+    position: relative;
+    left: 750px;
+    top:30px;
+
+}
+
+#options{
+    width: 100vw;
+    height: 100px;
+    position:absolute;
+    top: 100px;
+    left:0;
+    background-color: antiquewhite;
+    border-radius: 20px ;
+
+}
+</style>
+
+
+</html>

@@ -1,28 +1,41 @@
 package crud.trocas;
 
+import com.mysql.cj.x.protobuf.Mysqlx;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import static org.springframework.http.ResponseEntity.*;
 
-import static org.springframework.http.ResponseEntity.status;
-
-
-@RestController
-@RequestMapping("/")
+@Controller
 public class TrocasController {
 
     @Autowired
-    public TrocasSeila Repositorio;
+    public TrocasService Service;
 
-    @GetMapping
-    public ResponseEntity<Produtos> Brioco(){
-        var Smoking = Repositorio.findAll();
-        return ResponseEntity.status(HttpStatus.OK).build();
+    @Autowired
+    public TrocasSeila repositorio;
+
+    @GetMapping("/principal")
+    public String index(){
+        Service.GetProducts();
+        return "index";
     }
 
+    @GetMapping("/criar")
+    public String index2(Model model){
+        model.addAttribute("Produtos", new Produtos());
+        return "index2";
+    }
+
+
+    @PostMapping("/criar/salvar")
+    public String fon(@ModelAttribute("Produtos") Produtos produtos){
+        Service.add(produtos);
+         return "redirect:/principal";
+    }
 }
