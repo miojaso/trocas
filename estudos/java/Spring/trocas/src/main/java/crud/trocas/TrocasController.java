@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 import static org.springframework.http.ResponseEntity.*;
 
 @Controller
@@ -21,9 +23,15 @@ public class TrocasController {
     public TrocasSeila repositorio;
 
     @GetMapping("/principal")
-    public String index(){
-        Service.GetProducts();
+    public String index(Model model){
+        List<Produtos> produtos = Service.GetProducts();
+        model.addAttribute("produtos",produtos);
         return "index";
+    }
+
+    @GetMapping("/{id}")
+    public String peido(){
+        return "produto-pag";
     }
 
     @GetMapping("/criar")

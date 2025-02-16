@@ -5,44 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
 
-<body>
     <div id="banner">
         <h2 id="titulo">Trocas</h2>
 
         <span id="busca"><input><button>a</button></span>
 
-        <button id="opcs">=</button>
+        <button id="opcs" onclick= options.style.display="block" >=</button>
     </div>
+
 
     <div id="options">
-        <a href="/criar"><h3 id="send_produtos">colocar produtos</h3></a>
+        <a th:href="@{/criar}"><h3 id="send_produtos">colocar produtos</h3></a>
     </div>
 
+</head>
+
+<body>
+
+    <th:block th:each="produto : ${produtos}" id="doentio">
     <div>
-
+        <h3 id="sh-desc" th:text="${produto.descricao}">Default Description</h3>
+        <h3 id="sh-nom" th:text="${produto.nomeDoProduto}"></h3>
+        <h3 id="sh-req" th:text="${produto.desejo}"></h3>
+        <hr>
     </div>
+    </th:block>
+
+   <h1>cu eu quero cu</h1>
 
 
-    <script src="script.js">
-        const BotaoDeOptions =document.querySelector("opcs");
-        const options = document.querySelector("#send_produtos");
+    <script>
 
-        options.addEventListener("submit",(e)=>{
-            e.preventDefault();
- options.style.display="block"
-        });
-
-        options.style.display="none"
-         
-
-
-        fetch("http://localhost:3000").then(
-            response.status(200)
-          ).catch(
-            response.status(400)
-          )
+        document.addEventListener('DOMContentLoaded', () => {
+            const optionsMenu = document.getElementById('options');
+            document.getElementById('opcs').addEventListener('click', () => {
+                optionsMenu.style.display =
+                    optionsMenu.style.display === 'block' ? 'none' : 'block';
+            })
     </script>
 
 </body>
@@ -50,6 +50,8 @@
 <style>
     #banner{
     position: absolute;
+    display: flex;
+    flex-wrap: nowrap;
 
     top: 0px;
     left: 0px;
@@ -63,7 +65,7 @@
     position: absolute;
     top: 10px;
     left:200px;
-
+    
 }
 
 #busca{
@@ -90,8 +92,17 @@
     left:0;
     background-color: antiquewhite;
     border-radius: 20px ;
+    display: none;
+    z-index: 100;
+
+
 
 }
+#doentio{
+    position:relative;
+    top: 100px;
+}
+
 </style>
 
 
