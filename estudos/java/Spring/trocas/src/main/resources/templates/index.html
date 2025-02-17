@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+</head>
 
+<body>
     <div id="banner">
         <h2 id="titulo">Trocas</h2>
 
@@ -19,30 +21,44 @@
         <a th:href="@{/criar}"><h3 id="send_produtos">colocar produtos</h3></a>
     </div>
 
-</head>
-
-<body>
-
-    <th:block th:each="produto : ${produtos}" id="doentio">
-    <div>
-        <h3 id="sh-desc" th:text="${produto.descricao}">Default Description</h3>
+    <th:block th:each="produto : ${produtos}">
+    <div id="doentio">
+        
         <h3 id="sh-nom" th:text="${produto.nomeDoProduto}"></h3>
+        <h3 id="sh-desc" th:text="${produto.descricao}"></h3>
         <h3 id="sh-req" th:text="${produto.desejo}"></h3>
-        <hr>
+        <div><Button id="whazap"><h3 id="whatzap_text">whatzap</h3></Button></div>
     </div>
     </th:block>
 
-   <h1>cu eu quero cu</h1>
 
 
     <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const blokinho = document.getElementById("doentio");
+    const nom = document.getElementById("sh-nom");
+    const req = document.getElementById("sh-req");
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const optionsMenu = document.getElementById('options');
-            document.getElementById('opcs').addEventListener('click', () => {
-                optionsMenu.style.display =
-                    optionsMenu.style.display === 'block' ? 'none' : 'block';
-            })
+    function verificarEsvaziamento() {
+        if ((!nom || nom.textContent.trim() === "") && (!req || req.textContent.trim() === "")) {
+            blokinho.style.display = "none"; // Esconde a div se ambas h3 estiverem vazias
+        } else {
+            blokinho.style.display = "block"; // Mostra a div se pelo menos uma h3 tiver conteúdo
+        }
+    }
+
+    verificarEsvaziamento();
+
+    // Observa mudanças nas h3
+    const observer = new MutationObserver(verificarEsvaziamento);
+    observer.observe(nom, { childList: true, subtree: true });
+    observer.observe(req, { childList: true, subtree: true });
+});
+
+        
+
+    
+
     </script>
 
 </body>
@@ -101,9 +117,25 @@
 #doentio{
     position:relative;
     top: 100px;
+
+    width: 550px;
+    height: 300px;
+    background-color: #ceeb95;
+    border-radius:20px;
+    border-style:groove;
+}
+#whazap{
+    position:absolute;
+    height: 50px;
+    width: 300px;
+    left: 20%;
+    background:linear-gradient(25deg,rgb(17, 221, 27),rgb(83, 224, 76));
+    border-radius: 20px;
+    border-style:none ;
+    top: 200px;
 }
 
-</style>
 
+</style>
 
 </html>

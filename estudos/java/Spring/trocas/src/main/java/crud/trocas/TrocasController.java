@@ -29,10 +29,6 @@ public class TrocasController {
         return "index";
     }
 
-    @GetMapping("/{id}")
-    public String peido(){
-        return "produto-pag";
-    }
 
     @GetMapping("/criar")
     public String index2(Model model){
