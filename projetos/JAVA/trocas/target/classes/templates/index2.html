@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/style2.css" />
+</head>
+<body>
+
+  <h1 id="titulo">adicionar produto</h1>
+
+    <div id="sei">
+        <form method="post" th:action="@{/criar/salvar}" id="formu" th:object="${Produtos}">
+
+            <h3 class="nome" >nome do produto</h3>
+            <input type="text" class="nome" th:field="*{nomeDoProduto}" name="NomeDoProduto">
+
+            <h3 class="descricao">descrição</h3>
+            <input type="text" class="descricao" th:field="*{descricao}" name="Descricao">
+
+            <h3 class="requer">requerimento</h3>
+            <input type="text" class="requer" th:field="*{desejo}" name="Desejo">
+
+            <input type="submit" value="enviar" id="butao"></button>
+    </form>
+    </div>    
+
+    <h4 id="memo"></h4>
+
+    <script>
+        const { response } = require("express");
+
+        //caso não tenha nada no input, cê não vai colocar o produto
+        const butao= document.getElementById("#butao");
+        const jiromba = document.querySelector('#formu');
+
+        jiromba.addEventListener("submit",(e)=>{
+        e.preventDefault();
+
+        const nome = document.querySelector("#nome");
+        const descricao = document.querySelector("#descricao");
+        const requer = document.querySelector('#requer');
+
+
+        const va = requer.value;
+        const lor= descricao.value;
+        const izar= nome.value;
+
+        
+        
+});
+
+    </script>
+
+
+
+<style>
+
+#titulo{
+  position: relative;
+  left:748px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#sei{
+    position:relative;
+    left: 625px;
+    top: 10px;
+    height: 630px;
+    width: 500px;
+    border-radius: 10%;
+    background-color: #cc7b7b;
+    border-right-style:solid;
+}
+
+.nome{
+  position:relative;
+ height: 30px;
+ width: 350px;
+ left: 70px;
+ top:50px;
+ border-radius: 10px ;
+ font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+.requer{
+ position:relative;
+ height: 30px;
+ width: 350px;
+ left: 70px;
+ top:150px;
+ border-radius: 10px ;
+ font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+.descricao{
+  position:relative;
+ height: 30px;
+ width: 350px;
+ left: 70px;
+ top:100px;
+ border-radius: 10px ;
+ font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+#butao{
+  position:relative;
+  top:230px;
+  left:50px;
+  height: 50px;
+  width: 400px;
+  border-radius: 10px;
+}
+
+    </style>
+
+</body>
+</html>
